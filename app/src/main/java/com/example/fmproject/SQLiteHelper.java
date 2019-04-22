@@ -2,6 +2,7 @@ package com.example.fmproject;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
@@ -60,6 +61,13 @@ public class SQLiteHelper extends SQLiteOpenHelper{
             return false;
         else
             return true;
+    }
+
+    public Cursor getAllData(){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        Cursor res=sqLiteDatabase.rawQuery("select * from " +Table_Name, null);
+        return res;
+
     }
     /*
     public void queryData (String sql){
